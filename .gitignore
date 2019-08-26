@@ -10,6 +10,7 @@
 
 # production
 /build
+/dist
 
 # misc
 .DS_Store
@@ -23,5 +24,8 @@ yarn-debug.log*
 yarn-error.log*
 
 # compiled ts files
-/src/electron/*.js
+/src/electron/**/*.js
 # can re-include any specifically necessary js files like this: !/src/electron/electron.js
+
+# electron files copied to public for releases
+/public/**/*.js

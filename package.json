@@ -20,7 +20,6 @@
     }
   },
   "dependencies": {
-    "electron": "^5.0.6",
     "electron-is-dev": "^1.1.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
@@ -32,7 +31,9 @@
     "@types/react": "16.9.2",
     "@types/react-dom": "16.9.0",
     "concurrently": "^4.1.1",
+    "copyfiles": "^2.1.1",
     "cross-env": "^5.2.0",
+    "electron": "^5.0.6",
     "electron-builder": "^20.44.4",
     "electron-reload": "^1.4.0",
     "nodemon": "^1.19.1",
@@ -42,17 +43,19 @@
     "watch": "^1.0.2"
   },
   "scripts": {
-    "react-start": "react-scripts start",
-    "react-build": "react-scripts build",
-    "react-test": "react-scripts test --env=jsdom",
-    "react-eject": "react-scripts eject",
-    "react-prebuild": "cross-env cp ../main/src/*.js public/",
-    "electron-build": "electron-builder",
-    "release": "npm run react-prebuild && npm run react-build && electron-builder --publish=always",
-    "build": "npm run react-prebuild && npm run react-build && npm run electron-build",
-    "client-start": "cross-env BROWSER=none npm run react-start",
-    "server-start": "concurrently \"tsc ./src/electron/electron.ts -w\"  \"cross-env NODE_ENV=dev nodemon --exec \"\"wait-on http://localhost:3000 && electron src/electron/electron.js\"\"",
-    "start": "run-p client-start server-start"
+    "react:start": "react-scripts start",
+    "react:build": "react-scripts build",
+    "react:test": "react-scripts test --env=jsdom",
+    "react:eject": "react-scripts eject",
+    "react:prebuild": "copyfiles -u 2 src/electron/**/*.js public",
+    "electron:build": "electron-builder",
+    "electron:publish": "electron-builder --publish=always",
+    "release": "run-s server:build react:prebuild react:build electron:publish",
+    "build": "run-s server:build react:prebuild react:build electron:build",
+    "client:start": "cross-env BROWSER=none npm run react:start",
+    "server:build": "tsc ./src/electron/electron.ts",
+    "server:start": "concurrently \"tsc ./src/electron/electron.ts -w\"  \"cross-env NODE_ENV=dev nodemon --exec \"\"wait-on http://localhost:3000 && electron src/electron/electron.js\"\"",
+    "start": "run-p client:start server:start"
   },
   "eslintConfig": {
     "extends": "react-app"
