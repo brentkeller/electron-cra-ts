@@ -1,12 +1,14 @@
 {
-  "name": "cra-electron",
+  "name": "electron-cra-ts",
+  "description": "Starter kit for electron apps using create-react-app with typescript",
   "version": "0.1.0",
+  "author": "<your name>",
   "private": true,
   "homepage": "./",
   "build": {
     "appId": "com.example.myApplication",
     "productName": "My Application",
-    "copyright": "Copyright © 2019 Natesh M Bhat",
+    "copyright": "Copyright © 2019 <your name or company>",
     "files": [
       "build/**/*",
       "node_modules/**/*"
