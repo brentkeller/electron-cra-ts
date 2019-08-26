@@ -1,3 +1,23 @@
+# Electron app powered by `create-react-app` with Typescript
+
+This app started with this starter kit [https://github.com/nateshmbhat/electron-react-ts-starter/](https://github.com/nateshmbhat/electron-react-ts-starter/) but converted to run from a single directory/package.json.
+
+---
+
+## Getting started
+
+Clone this repo  
+Run `yarn`  
+Run `yarn start`
+
+Any changes to the files in `src` will reload the app.
+
+### Packaging
+
+Run `yarn build` to package the app as an executable (`.exe`) to the `dist` directory.
+
+---
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
