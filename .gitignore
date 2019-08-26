@@ -21,3 +21,7 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# compiled ts files
+/src/electron/*.js
+# can re-include any specifically necessary js files like this: !/src/electron/electron.js
